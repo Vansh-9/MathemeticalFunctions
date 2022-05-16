@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experiment 6</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <br /><br /><br /><br />
+    <div class="container">
+      <!-- Is Prime Number Article-->
+      <article class="prime-article">
+        <h2 class="">Is Prime Number</h2>
+        <p class="enter-para">Enter the number</p>
+        <input type="text" id="prime-input" />
+        <div class="btn-container">
+          <button id="prime-btn">Submit</button>
+        </div>
+        <p id="prime-output">No input yet</p>
+      </article>
+      <!-- End of Is Prime Number -->
+
+      <!-- Multiplication Table Article-->
+      <article class="table-article">
+        <h2 class="">Multiplication Table</h2>
+        <p class="enter-para">Enter the number</p>
+        <input type="text" id="table-input" />
+        <div class="btn-container">
+          <button id="table-btn">Submit</button>
+        </div>
+        <p id="table-output">No input yet</p>
+      </article>
+      <!-- End of Multiplication Table -->
+
+      <!-- Factorial Calculator Article -->
+      <article class="factorial-article">
+        <h2 class="">Factorial Calculator</h2>
+        <p class="enter-para">Enter the number</p>
+        <input type="text" id="factorial-input" />
+        <div class="btn-container">
+          <button id="factorial-btn">Submit</button>
+        </div>
+        <p id="factorial-output">No input yet</p>
+      </article>
+      <!-- End of Factorial Calculator Article -->
+
+      <!-- Age Calculator Article -->
+      <article class="age-article">
+        <h2 class="">Age Calculator</h2>
+        <p class="enter-para">Enter the date</p>
+        <input type="date" id="age-input" />
+        <div class="btn-container">
+          <button id="age-btn">Submit</button>
+        </div>
+        <p id="age-output">No input yet</p>
+      </article>
+      <!-- End of Age Calculator Article -->
+    </div>
+    <!-- Javascript -->
+    <script>
+      //   Is Prime Number Logic
+      document.getElementById("prime-btn").addEventListener("click", () => {
+        const value = document.getElementById("prime-input").value;
+        const primeOutput = document.getElementById("prime-output");
+        if (isNaN(value)) {
+          alert("Enter valid number");
+          return;
+        }
+        let prime = true;
+        if (value == 1) prime = false;
+        for (let i = 2; i * i <= value; i++) {
+          if (value % i == 0) prime = false;
+        }
+        if (prime) {
+          primeOutput.innerText = `${value} is a prime number`;
+        } else {
+          primeOutput.innerText = `${value} is not a prime number`;
+        }
+      });
+
+      //   Multiplication Table Logic
+      document.getElementById("table-btn").addEventListener("click", () => {
+        const value = document.getElementById("table-input").value;
+        if (isNaN(value)) {
+          alert("Enter valid number");
+          return;
+        }
+        const tableOutput = document.getElementById("table-output");
+        let output = "";
+        for (let i = 1; i <= 10; i++) {
+          output += `<div>${value} x ${i}  = ${value * i}</div>`;
+        }
+        tableOutput.innerHTML = output;
+      });
+
+      //   Factorial Calculator Logic
+      document.getElementById("factorial-btn").addEventListener("click", () => {
+        const value = document.getElementById("factorial-input").value;
+        if (isNaN(value)) {
+          alert("Enter valid number");
+          return;
+        }
+        const factorialOutput = document.getElementById("factorial-output");
+        let factorial = 1;
+        for (let i = 2; i <= value; i++) {
+          factorial *= i;
+        }
+        factorialOutput.innerText = `Factorial of ${value} is ${factorial}`;
+      });
+
+      //   Age Calculator Logic
+      document.getElementById("age-btn").addEventListener("click", () => {
+        const value = document.getElementById("age-input").value;
+        const ageOutput = document.getElementById("age-output");
+        let today = new Date();
+        let dob = new Date(value);
+        if (dob > today) {
+          ageOutput.innerText = "Enter valid date..";
+          return;
+        }
+        let diffInMillisecond = today.valueOf() - dob.valueOf();
+        let year_age = Math.floor(diffInMillisecond / 31536000000);
+        let day_age = Math.floor((diffInMillisecond % 31536000000) / 86400000);
+        let month_age = Math.floor(day_age / 30);
+        day_age = day_age % 30;
+        ageOutput.innerText = `Age of person is ${year_age} years ${month_age} months and ${day_age} days`;
+      });
+    </script>
+  </body>
+</html>

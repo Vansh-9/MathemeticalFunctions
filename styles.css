@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h2 {
+  text-align: center;
+  color: #050a30;
+}
+.enter-para {
+  font-size: 1.1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #050a30;
+}
+.container {
+  display: grid;
+  min-height: 80vh;
+  gap: 2rem;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+.container article {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 2px solid #000c66;
+  padding: 1rem;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+button {
+  background: #4b2e67;
+  color: white;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.2rem 1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+input {
+  outline: none;
+  padding: 0.3rem 1rem;
+  border-radius: 0.3rem;
+  background-color: #65c6d4;
+}
+#prime-output,
+#table-output,
+#age-output,
+#factorial-output {
+  color: #050a30;
+  font-size: 1.2rem;
+  text-align: center;
+}
+@media screen and (min-width: 600px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+body {
+  background-color: #f69e33;
+}
+
+article {
+  background-color: #cb74ac;
+  border-radius: 1.2rem;
+  min-height: 28rem;
+  align-self: auto;
+}
